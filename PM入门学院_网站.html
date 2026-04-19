@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM 入门学院 · 产品经理完整学习路径</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+:root{
+  --bg:#f8f6f1;--surface:#ffffff;--border:#e6e2d8;
+  --text:#1a1917;--muted:#7a776e;--hint:#b0aca3;
+  --green:#2d5a3d;--green-mid:#4a8a60;--green-light:#e8f0eb;--green-pale:#f2f7f4;
+  --amber:#7a4f1a;--amber-light:#faf0e0;
+  --sans:'Plus Jakarta Sans',sans-serif;--serif:'Noto Serif SC',serif;--mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(248,246,241,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--green);}
+.nav-logo span{font-family:var(--sans);font-weight:300;font-size:12px;color:var(--muted);margin-left:8px;letter-spacing:.06em;}
+.nav-links{display:flex;gap:28px;font-size:13px;color:var(--muted);}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{font-size:12px;font-weight:500;padding:8px 18px;border-radius:6px;background:var(--green);color:#fff;transition:.15s;}
+.nav-cta:hover{background:#234a32;}
+
+/* HERO */
+.hero{max-width:1120px;margin:0 auto;padding:100px 32px 80px;display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);margin-bottom:20px;}
+.hero-title{font-family:var(--serif);font-size:52px;font-weight:700;line-height:1.15;color:var(--text);margin-bottom:20px;}
+.hero-title em{font-style:normal;color:var(--green);}
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:36px;max-width:480px;}
+.hero-actions{display:flex;gap:12px;align-items:center;}
+.btn-primary{font-size:14px;font-weight:500;padding:12px 28px;border-radius:8px;background:var(--green);color:#fff;border:none;cursor:pointer;transition:.15s;}
+.btn-primary:hover{background:#234a32;}
+.btn-ghost{font-size:13px;color:var(--muted);padding:12px 20px;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:.15s;}
+.btn-ghost:hover{border-color:var(--green);color:var(--green);}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;}
+.hero-card-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--hint);margin-bottom:16px;}
+.progress-list{display:flex;flex-direction:column;gap:10px;}
+.prog-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;font-size:13px;}
+.prog-item.done{background:var(--green-pale);}
+.prog-item.active{background:var(--green-light);border:1px solid #c0dcc8;}
+.prog-item.locked{opacity:.45;}
+.prog-num{width:22px;height:22px;border-radius:50%;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prog-item.done .prog-num{background:var(--green);color:#fff;}
+.prog-item.active .prog-num{background:var(--green-mid);color:#fff;}
+.prog-item.locked .prog-num{background:var(--border);color:var(--muted);}
+.prog-label{flex:1;color:var(--text);}
+.prog-badge{font-size:10px;padding:2px 7px;border-radius:4px;font-family:var(--mono);}
+.prog-item.done .prog-badge{background:var(--green-pale);color:var(--green);}
+.prog-item.active .prog-badge{background:var(--green-light);color:var(--green-mid);}
+.hero-card-bottom{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.progress-bar-wrap{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin:0 12px;}
+.progress-bar-fill{height:100%;width:40%;background:var(--green);border-radius:3px;}
+.progress-text{font-size:11px;color:var(--muted);font-family:var(--mono);}
+
+/* STATS */
+.stats{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1120px;margin:0 auto;padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.stat{padding:0 28px;border-right:1px solid var(--border);text-align:center;}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--green);margin-bottom:4px;}
+.stat-label{font-size:12px;color:var(--muted);}
+
+/* SECTION */
+.section{max-width:1120px;margin:0 auto;padding:80px 32px;}
+.section-header{text-align:center;margin-bottom:56px;}
+.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);margin-bottom:12px;}
+.section-title{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.section-sub{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto;}
+
+/* CURRICULUM */
+.curriculum{display:flex;flex-direction:column;gap:16px;}
+.module-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s;}
+.module-card:hover{border-color:#c0dcc8;box-shadow:0 4px 24px rgba(45,90,61,.06);}
+.module-header{padding:20px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;}
+.module-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:500;flex-shrink:0;}
+.mod1 .module-icon{background:#eeedfe;color:#534ab7;}
+.mod2 .module-icon{background:#e1f5ee;color:#0f6e56;}
+.mod3 .module-icon{background:#faeeda;color:#854f0b;}
+.mod4 .module-icon{background:#e6f1fb;color:#185fa5;}
+.mod5 .module-icon{background:#fbeaf0;color:#993556;}
+.module-info{flex:1;}
+.module-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:3px;}
+.module-meta{font-size:12px;color:var(--muted);}
+.module-deliverable{font-size:11px;padding:4px 10px;border-radius:5px;background:var(--green-light);color:var(--green);font-weight:500;white-space:nowrap;}
+.module-body{padding:0 24px 20px;display:none;}
+.module-body.open{display:block;}
+.module-topics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.topic-tag{font-size:11px;padding:3px 10px;border-radius:5px;background:var(--bg);border:1px solid var(--border);color:var(--muted);}
+.module-output{background:var(--green-pale);border:1px solid #c0dcc8;border-radius:8px;padding:12px 14px;font-size:13px;color:var(--text);line-height:1.6;}
+.module-output-label{font-size:10px;font-weight:500;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+
+/* DIFF */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.diff-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;}
+.diff-card.featured{border-color:var(--green-mid);background:var(--green-pale);}
+.diff-icon{width:36px;height:36px;border-radius:9px;background:var(--green-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.diff-icon svg{width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:1.8;}
+.diff-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:6px;}
+.diff-text{font-size:13px;color:var(--muted);line-height:1.65;}
+
+/* BOOKS */
+.books-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.book-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
+.book-phase{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--hint);margin-bottom:10px;}
+.book-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.book-author{font-size:12px;color:var(--muted);margin-bottom:8px;}
+.book-reason{font-size:12px;color:var(--text);line-height:1.6;padding-top:8px;border-top:1px solid var(--border);}
+
+/* QUOTE */
+.quote-section{background:var(--green);padding:80px 32px;}
+.quote-inner{max-width:700px;margin:0 auto;text-align:center;}
+.quote-mark{font-family:var(--serif);font-size:64px;color:rgba(255,255,255,.3);line-height:.8;margin-bottom:8px;}
+.quote-text{font-family:var(--serif);font-size:24px;font-weight:400;color:#fff;line-height:1.6;margin-bottom:16px;}
+.quote-author{font-size:13px;color:rgba(255,255,255,.6);}
+
+/* CTA */
+.cta-section{max-width:640px;margin:0 auto;padding:80px 32px;text-align:center;}
+.cta-title{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.cta-sub{font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+.cta-actions{display:flex;gap:12px;justify-content:center;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);background:var(--surface);}
+.footer-inner{max-width:1120px;margin:0 auto;padding:32px;display:flex;justify-content:space-between;align-items:center;}
+.footer-logo{font-family:var(--serif);font-size:15px;color:var(--green);}
+.footer-links{display:flex;gap:20px;font-size:12px;color:var(--hint);}
+.footer-note{font-size:11px;color:var(--hint);font-family:var(--mono);}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding:60px 20px 40px;}
+  .hero-card{display:none;}
+  .hero-title{font-size:36px;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .diff-grid,.books-grid{grid-template-columns:1fr;}
+  .section{padding:60px 20px;}
+  .nav-links{display:none;}
+}
+
+/* ── AUTH OVERLAY ── */
+.auth-overlay{position:fixed;inset:0;z-index:999;background:rgba(26,25,23,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
+.auth-overlay.show{opacity:1;pointer-events:all;}
+.auth-box{background:var(--surface);border-radius:18px;padding:40px;width:100%;max-width:400px;position:relative;}
+.auth-logo{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--green);text-align:center;margin-bottom:4px;}
+.auth-tagline{font-size:12px;color:var(--muted);text-align:center;margin-bottom:28px;}
+.auth-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:24px;}
+.auth-tab{flex:1;text-align:center;padding:8px;font-size:13px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:.15s;}
+.auth-tab.active{color:var(--green);border-bottom-color:var(--green);font-weight:500;}
+.auth-form{display:none;flex-direction:column;gap:14px;}
+.auth-form.active{display:flex;}
+.auth-field{display:flex;flex-direction:column;gap:5px;}
+.auth-label{font-size:12px;color:var(--muted);font-weight:500;}
+.auth-input{padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--sans);color:var(--text);background:var(--bg);outline:none;transition:.15s;}
+.auth-input:focus{border-color:var(--green-mid);}
+.auth-btn{padding:12px;border-radius:8px;background:var(--green);color:#fff;border:none;font-size:14px;font-weight:500;font-family:var(--sans);cursor:pointer;transition:.15s;margin-top:4px;}
+.auth-btn:hover{background:#234a32;}
+.auth-err{font-size:12px;color:#c0392b;background:#fdecea;padding:8px 12px;border-radius:6px;display:none;}
+.auth-err.show{display:block;}
+.auth-close{position:absolute;top:16px;right:18px;font-size:20px;color:var(--hint);cursor:pointer;line-height:1;}
+.auth-close:hover{color:var(--text);}
+.auth-divider{font-size:11px;color:var(--hint);text-align:center;margin:4px 0;}
+
+/* ── NAV USER ── */
+.nav-user{display:flex;align-items:center;gap:10px;}
+.nav-avatar{width:30px;height:30px;border-radius:50%;background:var(--green-light);border:1px solid #c0dcc8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);cursor:pointer;}
+.nav-user-name{font-size:13px;color:var(--text);}
+.nav-logout{font-size:12px;color:var(--muted);cursor:pointer;padding:4px 8px;border-radius:5px;}
+.nav-logout:hover{color:var(--text);background:var(--bg);}
+
+/* ── DASHBOARD ── */
+.dashboard{display:none;}
+.dashboard.show{display:block;}
+.main-content{display:block;}
+.main-content.hidden{display:none;}
+.dash-hero{max-width:1120px;margin:0 auto;padding:48px 32px 32px;}
+.dash-welcome{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.dash-sub{font-size:14px;color:var(--muted);margin-bottom:32px;}
+.dash-grid{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1120px;margin:0 auto;padding:0 32px 60px;}
+.dash-sidebar{display:flex;flex-direction:column;gap:12px;}
+.dash-progress-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;}
+.dpc-label{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px;}
+.dpc-bar-wrap{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:8px;}
+.dpc-bar-fill{height:100%;background:var(--green);border-radius:3px;transition:width .4s;}
+.dpc-stat{font-size:12px;color:var(--muted);}
+.dpc-stat span{color:var(--green);font-weight:500;}
+.dash-mod-list{display:flex;flex-direction:column;gap:6px;margin-top:12px;}
+.dash-mod-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:12px;cursor:pointer;transition:.15s;}
+.dash-mod-item:hover{background:var(--bg);}
+.dash-mod-item.active-mod{background:var(--green-light);}
+.dmi-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dmi-done{background:var(--green);}
+.dmi-active{background:var(--green-mid);}
+.dmi-locked{background:var(--border);}
+.dmi-label{flex:1;color:var(--text);}
+.dmi-check{font-size:10px;color:var(--green);}
+.dash-main{display:flex;flex-direction:column;gap:16px;}
+.dash-module-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.dmc-header{padding:18px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);}
+.dmc-num{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:500;flex-shrink:0;}
+.dmc-info{flex:1;}
+.dmc-title{font-size:14px;font-weight:500;color:var(--text);}
+.dmc-meta{font-size:11px;color:var(--muted);}
+.dmc-status{font-size:11px;padding:3px 9px;border-radius:5px;font-weight:500;}
+.status-done{background:var(--green-light);color:var(--green);}
+.status-active{background:#faeeda;color:#854f0b;}
+.status-locked{background:var(--bg);color:var(--hint);border:1px solid var(--border);}
+.dmc-body{padding:16px 20px;}
+.dmc-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.dmc-action{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:8px 16px;border-radius:7px;background:var(--green);color:#fff;border:none;cursor:pointer;transition:.15s;font-family:var(--sans);}
+.dmc-action:hover{background:#234a32;}
+.dmc-action.locked-btn{background:var(--bg);color:var(--hint);border:1px solid var(--border);cursor:not-allowed;}
+@media(max-width:768px){.dash-grid{grid-template-columns:1fr;padding:0 20px 40px;}.dash-sidebar{display:none;}}
+
+/* ── COURSE VIEWER ── */
+.course-viewer{display:none;position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;}
+.course-viewer.open{display:block;}
+.cv-nav{position:sticky;top:0;z-index:10;background:rgba(248,246,241,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;}
+.cv-back{font-size:12px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:5px;border:1px solid var(--border);background:var(--surface);transition:.15s;}
+.cv-back:hover{color:var(--green);border-color:var(--green);}
+.cv-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--text);}
+.cv-progress{font-size:11px;color:var(--muted);font-family:var(--mono);margin-left:auto;}
+.cv-layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 52px);}
+.cv-sidebar{background:var(--surface);border-right:1px solid var(--border);padding:16px 0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;}
+.cv-week{padding:10px 18px 4px;font-size:10px;font-weight:600;color:var(--hint);letter-spacing:.07em;text-transform:uppercase;}
+.cv-item{display:flex;align-items:flex-start;gap:8px;padding:8px 18px;font-size:12px;color:var(--muted);cursor:pointer;border-left:2px solid transparent;line-height:1.4;transition:.15s;}
+.cv-item:hover{color:var(--text);background:var(--bg);}
+.cv-item.cv-active{color:var(--green);border-left-color:var(--green);background:var(--green-pale);}
+.cv-item.cv-done .cv-dot{background:var(--green);}
+.cv-dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;margin-top:4px;}
+.cv-active .cv-dot{background:var(--green);}
+.cv-main{max-width:680px;margin:0 auto;padding:40px 32px 80px;}
+.cv-eyebrow{font-size:11px;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+.cv-lesson-title{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.3;color:var(--text);margin-bottom:6px;}
+.cv-lesson-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
+.cv-meta-row{display:flex;gap:14px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.cv-meta-item{font-size:11px;color:var(--hint);display:flex;align-items:center;gap:4px;}
+.step-block{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);margin-bottom:20px;}
+.step-hd{display:flex;align-items:center;gap:10px;padding:13px 18px;background:var(--bg);border-bottom:1px solid var(--border);}
+.step-badge{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;font-family:var(--mono);flex-shrink:0;}
+.sb1{background:#e8f0eb;color:var(--green);}
+.sb2{background:#faeeda;color:#7a4f1a;}
+.sb3{background:#fbeaf0;color:#6b2d45;}
+.sb4{background:#e6f1fb;color:#1a4f7a;}
+.step-hd-label{font-size:13px;font-weight:500;color:var(--text);}
+.step-hd-sub{font-size:11px;color:var(--muted);margin-left:auto;}
+.step-bd{padding:20px;}
+.read-text{font-size:14px;line-height:1.85;color:#2a2820;}
+.read-text h3{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--text);margin:24px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--border);}
+.read-text h3:first-child{margin-top:0;}
+.read-text p{margin-bottom:14px;}
+.read-text p:last-child{margin-bottom:0;}
+.read-hl{background:#fdf6e3;border-left:3px solid #c4622d;padding:11px 14px;margin:16px 0;border-radius:0 6px 6px 0;font-size:13px;color:#4a3820;line-height:1.7;}
+.read-hl strong{color:#c4622d;}
+.read-btn{display:inline-flex;align-items:center;gap:5px;margin-top:16px;padding:8px 16px;border-radius:7px;font-size:12px;font-weight:500;font-family:var(--sans);background:var(--green);color:#fff;border:none;cursor:pointer;transition:.15s;}
+.read-btn:hover{background:#234a32;}
+.read-btn.done-btn{background:var(--bg);color:var(--muted);border:1px solid var(--border);cursor:default;}
+.tq-list{display:flex;flex-direction:column;gap:14px;}
+.tq{background:var(--bg);border-radius:8px;padding:12px 14px;}
+.tq-num{font-size:10px;font-weight:600;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.tq-text{font-size:13px;color:var(--text);line-height:1.6;margin-bottom:8px;}
+.tq-ta{width:100%;min-height:72px;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:var(--sans);color:var(--text);background:#fff;resize:vertical;outline:none;transition:.15s;line-height:1.6;}
+.tq-ta:focus{border-color:var(--green);}
+.tq-ta::placeholder{color:var(--hint);}
+.submit-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:500;font-family:var(--sans);background:var(--text);color:#fff;border:none;cursor:pointer;transition:.15s;}
+.submit-btn:hover{background:#3a3830;}
+.reflect-intro{font-size:12px;color:var(--muted);margin-bottom:14px;padding:10px 12px;background:var(--bg);border-radius:7px;line-height:1.6;}
+.r-msgs{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.r-msg{display:flex;gap:8px;align-items:flex-start;}
+.r-msg.r-user{flex-direction:row-reverse;}
+.r-av{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;}
+.r-av.ai{background:var(--green);color:#fff;}
+.r-av.me{background:var(--bg);color:var(--muted);border:1px solid var(--border);}
+.r-bub{max-width:84%;padding:8px 12px;border-radius:9px;font-size:13px;line-height:1.6;}
+.r-bub.ai-b{background:var(--bg);color:var(--text);}
+.r-bub.me-b{background:var(--green);color:#fff;}
+.r-input-row{display:flex;gap:7px;}
+.r-in{flex:1;padding:9px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans);color:var(--text);outline:none;background:#fff;transition:.15s;}
+.r-in:focus{border-color:var(--green);}
+.r-send{padding:9px 16px;border-radius:7px;background:var(--green);color:#fff;border:none;font-size:12px;font-weight:500;font-family:var(--sans);cursor:pointer;transition:.15s;}
+.r-send:hover{background:#234a32;}
+.r-send:disabled{opacity:.4;cursor:not-allowed;}
+.tdots span{width:4px;height:4px;border-radius:50%;background:var(--muted);display:inline-block;margin:0 1px;animation:tb 1.2s infinite;}
+.tdots span:nth-child(2){animation-delay:.2s;}
+.tdots span:nth-child(3){animation-delay:.4s;}
+@keyframes tb{0%,80%,100%{opacity:.2}40%{opacity:1}}
+.fb-trig{display:inline-flex;align-items:center;gap:5px;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:500;font-family:var(--sans);background:var(--green);color:#fff;border:none;cursor:pointer;transition:.15s;}
+.fb-trig:hover{background:#234a32;}
+.fb-spin-row{display:none;align-items:center;gap:8px;font-size:13px;color:var(--muted);}
+.fb-spin-row.show{display:flex;}
+.mini-spin{width:13px;height:13px;border:2px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:sp .8s linear infinite;}
+@keyframes sp{to{transform:rotate(360deg)}}
+.fb-out{display:none;flex-direction:column;gap:12px;}
+.fb-out.show{display:flex;}
+.fb-scores{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.fb-sc{background:var(--bg);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--border);}
+.fb-sc-l{font-size:10px;color:var(--muted);margin-bottom:3px;}
+.fb-sc-v{font-size:20px;font-weight:600;font-family:var(--mono);color:var(--green);}
+.fb-blk{padding:12px 14px;border-radius:8px;background:var(--bg);border-left:3px solid var(--green);}
+.fb-blk.warn{border-left-color:#c4622d;}
+.fb-blk-l{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+.fb-blk.warn .fb-blk-l{color:#c4622d;}
+.fb-blk-t{font-size:13px;color:var(--text);line-height:1.6;}
+.e-note{display:flex;gap:9px;padding:12px 14px;background:#fdf6e3;border-radius:8px;border:1px solid #e8d5a0;}
+.e-av{width:26px;height:26px;border-radius:50%;background:#c4622d;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:12px;font-weight:600;flex-shrink:0;}
+.e-t{font-size:12px;color:#5a3810;line-height:1.6;}
+.e-n{font-weight:600;font-size:11px;color:#c4622d;margin-bottom:2px;}
+.cv-lesson-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:20px;border-top:1px solid var(--border);}
+.cv-nav-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border-radius:7px;font-size:12px;font-weight:500;font-family:var(--sans);cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:.15s;}
+.cv-nav-btn:hover{border-color:var(--green);color:var(--green);}
+.cv-nav-btn.prim{background:var(--green);color:#fff;border-color:var(--green);}
+.cv-nav-btn.prim:hover{background:#234a32;}
+@media(max-width:768px){.cv-layout{grid-template-columns:1fr;}.cv-sidebar{display:none;}.cv-main{padding:24px 16px 60px;}}
+
+</style>
+</head>
+<body>
+
+<!-- AUTH OVERLAY -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-box">
+    <div class="auth-close" onclick="closeAuth()">×</div>
+    <div class="auth-logo">PM 入门学院</div>
+    <div class="auth-tagline">产品经理完整学习路径</div>
+    <div class="auth-tabs">
+      <div class="auth-tab active" onclick="switchAuth('login',this)">登录</div>
+      <div class="auth-tab" onclick="switchAuth('register',this)">注册</div>
+    </div>
+    <form class="auth-form active" id="loginForm" onsubmit="doLogin(event)">
+      <div class="auth-err" id="loginErr"></div>
+      <div class="auth-field"><label class="auth-label">邮箱</label><input class="auth-input" type="email" id="loginEmail" placeholder="your@email.com" required></div>
+      <div class="auth-field"><label class="auth-label">密码</label><input class="auth-input" type="password" id="loginPwd" placeholder="请输入密码" required></div>
+      <button class="auth-btn" type="submit">登录</button>
+      <div class="auth-divider">还没有账号？<span style="color:var(--green);cursor:pointer" onclick="switchAuth('register',null)">立即注册</span></div>
+    </form>
+    <form class="auth-form" id="registerForm" onsubmit="doRegister(event)">
+      <div class="auth-err" id="registerErr"></div>
+      <div class="auth-field"><label class="auth-label">昵称</label><input class="auth-input" type="text" id="regName" placeholder="你的名字" required></div>
+      <div class="auth-field"><label class="auth-label">邮箱</label><input class="auth-input" type="email" id="regEmail" placeholder="your@email.com" required></div>
+      <div class="auth-field"><label class="auth-label">密码（至少 6 位）</label><input class="auth-input" type="password" id="regPwd" placeholder="设置密码" minlength="6" required></div>
+      <button class="auth-btn" type="submit">创建账号，开始学习</button>
+    </form>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" style="cursor:pointer" onclick="goHome()">PM 入门学院<span>产品经理成长路径</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#curriculum">课程体系</a>
+      <a href="#difference">为什么选我们</a>
+      <a href="#books">书单</a>
+    </div>
+    <div id="navGuest"><a class="nav-cta" href="#" onclick="openAuth(event)">登录 / 注册</a></div>
+    <div class="nav-user" id="navUser" style="display:none">
+      <div class="nav-avatar" id="navAvatar" onclick="goDashboard()"></div>
+      <span class="nav-user-name" id="navUserName"></span>
+      <span class="nav-logout" onclick="doLogout()">退出</span>
+    </div>
+  </div>
+</nav>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-hero">
+    <div class="dash-welcome" id="dashWelcome">你好！</div>
+    <div class="dash-sub">继续你的学习进度，距离完成作品集还有几步。</div>
+  </div>
+  <div class="dash-grid">
+    <div class="dash-sidebar">
+      <div class="dash-progress-card">
+        <div class="dpc-label">作品集进度</div>
+        <div class="dpc-bar-wrap"><div class="dpc-bar-fill" id="dashBar" style="width:0%"></div></div>
+        <div class="dpc-stat"><span id="dashDone">0</span> / 6 件已完成</div>
+        <div class="dash-mod-list" id="dashModList"></div>
+      </div>
+    </div>
+    <div class="dash-main" id="dashMain"></div>
+  </div>
+</div>
+
+<div id="mainContent">
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">2026 · AI 时代产品经理入门</div>
+    <h1 class="hero-title">学完就有<em>作品集</em><br>而不只是证书</h1>
+    <p class="hero-sub">专为想成为产品经理的学生设计。每个模块学完，你手里有一个真实的交付物——6 周后拿着作品集去面试，而不是背一堆方法论。</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('curriculum').scrollIntoView({behavior:'smooth'})">查看课程体系</button>
+      <button class="btn-ghost">预览作品集模板</button>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-label">学习进度示例</div>
+    <div class="progress-list">
+      <div class="prog-item done"><div class="prog-num">01</div><div class="prog-label">职业认知</div><div class="prog-badge">已完成</div></div>
+      <div class="prog-item done"><div class="prog-num">02</div><div class="prog-label">产品思维</div><div class="prog-badge">已完成</div></div>
+      <div class="prog-item active"><div class="prog-num">03</div><div class="prog-label">核心方法</div><div class="prog-badge">进行中</div></div>
+      <div class="prog-item locked"><div class="prog-num">04</div><div class="prog-label">AI 必备技能</div><div class="prog-badge">未解锁</div></div>
+      <div class="prog-item locked"><div class="prog-num">05</div><div class="prog-label">书单 + 求职</div><div class="prog-badge">未解锁</div></div>
+    </div>
+    <div class="hero-card-bottom">
+      <span class="progress-text">作品集</span>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+      <span class="progress-text">2 / 6 件</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">核心模块</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">作品集交付物</div></div>
+    <div class="stat"><div class="stat-num">6–8</div><div class="stat-label">建议学习周数</div></div>
+    <div class="stat"><div class="stat-num">AI</div><div class="stat-label">批改 + 模拟面试</div></div>
+  </div>
+</div>
+
+<div class="section" id="curriculum">
+  <div class="section-header">
+    <div class="section-eyebrow">课程体系</div>
+    <h2 class="section-title">五个模块，每个都有交付物</h2>
+    <p class="section-sub">不是内容库，是学习路径。每个模块的知识点和作品集交付物是绑定的。</p>
+  </div>
+  <div class="curriculum">
+
+    <div class="module-card mod1">
+      <div class="module-header" onclick="toggleModule(this)">
+        <div class="module-icon">01</div>
+        <div class="module-info">
+          <div class="module-title">产品经理职业认知</div>
+          <div class="module-meta">2–3 课时 · 建议 1 周完成</div>
+        </div>
+        <div class="module-deliverable">交付物：职业认知自述</div>
+      </div>
+      <div class="module-body">
+        <div class="module-topics">
+          <span class="topic-tag">王慧文：PM 是终身学习的职业</span>
+          <span class="topic-tag">PM 的一天是什么样的</span>
+          <span class="topic-tag">C端 / B端 / AI产品 的区别</span>
+          <span class="topic-tag">AI 时代 PM 发生了哪些变化</span>
+          <span class="topic-tag">常见误区拆解</span>
+        </div>
+        <div style="background:#fdf6e3;border:1px solid #e8d5a0;border-radius:8px;padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+          <div style="flex-shrink:0;font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;background:#c4622d;color:#fff;letter-spacing:.04em;">精选课程</div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:500;color:#2a2820;">王慧文清华产品课</div>
+            <div style="font-size:11px;color:#8a7060;margin-top:2px;">15天 · 6讲 · 读思复盘全流程</div>
+          </div>
+          <button onclick="event.stopPropagation();openCourseViewer(event)" style="font-size:12px;font-weight:500;padding:7px 14px;border-radius:6px;background:var(--green);color:#fff;border:none;cursor:pointer;white-space:nowrap;font-family:var(--sans);">进入课程 →</button>
+        </div>
+        <div class="module-output">
+          <div class="module-output-label">作品集交付物</div>
+          写一篇 200 字「我理解的产品经理是什么」——用自己的语言，不引用，不堆框架。AI 批改逻辑清晰度，这篇自述面试时可以直接用作产品版自我介绍。
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card mod2">
+      <div class="module-header" onclick="toggleModule(this)">
+        <div class="module-icon">02</div>
+        <div class="module-info">
+          <div class="module-title">产品思维</div>
+          <div class="module-meta">3 课时 · 建议 1 周完成</div>
+        </div>
+        <div class="module-deliverable">交付物：App 拆解分析</div>
+      </div>
+      <div class="module-body">
+        <div class="module-topics">
+          <span class="topic-tag">用户 / 需求 / 场景三角</span>
+          <span class="topic-tag">如何识别伪需求</span>
+          <span class="topic-tag">MVP 思维与快速验证</span>
+          <span class="topic-tag">经典产品案例拆解</span>
+        </div>
+        <div class="module-output">
+          <div class="module-output-label">作品集交付物</div>
+          拆解一款你每天都在用的 App：核心用户是谁、使用场景、最关键的 3 个功能、你认为的最大问题和改进建议。一页纸，500 字以内。
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card mod3">
+      <div class="module-header" onclick="toggleModule(this)">
+        <div class="module-icon">03</div>
+        <div class="module-info">
+          <div class="module-title">产品核心方法</div>
+          <div class="module-meta">10 课时 · 建议 2–3 周完成</div>
+        </div>
+        <div class="module-deliverable">交付物：用户研究报告 + PRD</div>
+      </div>
+      <div class="module-body">
+        <div class="module-topics">
+          <span class="topic-tag">用户访谈怎么做</span>
+          <span class="topic-tag">竞品分析（不只是功能对比）</span>
+          <span class="topic-tag">需求优先级：RICE / KANO</span>
+          <span class="topic-tag">低保真原型设计</span>
+          <span class="topic-tag">PRD 核心结构</span>
+          <span class="topic-tag">如何说服研发</span>
+        </div>
+        <div class="module-output">
+          <div class="module-output-label">作品集交付物（2 件）</div>
+          ① 完成 3 个真实用户访谈，输出结构化洞察报告<br>
+          ② 为一个真实需求写一份迷你 PRD（含原型说明，500–800 字）
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card mod4">
+      <div class="module-header" onclick="toggleModule(this)">
+        <div class="module-icon">04</div>
+        <div class="module-info">
+          <div class="module-title">AI 时代必备知识与技能</div>
+          <div class="module-meta">4 课时 · 建议 1 周完成</div>
+        </div>
+        <div class="module-deliverable">交付物：AI 功能设计方案</div>
+      </div>
+      <div class="module-body">
+        <div class="module-topics">
+          <span class="topic-tag">PM 必须掌握的 AI 工具清单</span>
+          <span class="topic-tag">Prompt 工程基础</span>
+          <span class="topic-tag">AI 产品的设计特殊性</span>
+          <span class="topic-tag">「AI 搭架子，人填判断」的协作模式</span>
+          <span class="topic-tag">AI 时代如何持续学习</span>
+        </div>
+        <div class="module-output">
+          <div class="module-output-label">作品集交付物</div>
+          选一个场景，用 AI 工具辅助完成一个「AI 功能设计方案」：描述解决什么问题、AI 在其中的角色、用户体验路径。体现你对 AI 产品的基本理解。
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card mod5">
+      <div class="module-header" onclick="toggleModule(this)">
+        <div class="module-icon">05</div>
+        <div class="module-info">
+          <div class="module-title">书单推荐 + 求职准备</div>
+          <div class="module-meta">2 课时 + 自主练习 · 建议 1 周完成</div>
+        </div>
+        <div class="module-deliverable">交付物：简历 + 模拟面试</div>
+      </div>
+      <div class="module-body">
+        <div class="module-topics">
+          <span class="topic-tag">入门必读 8 本书单</span>
+          <span class="topic-tag">PM 简历的写法逻辑</span>
+          <span class="topic-tag">面试高频题 + 回答框架</span>
+          <span class="topic-tag">如何用作品集讲故事</span>
+        </div>
+        <div class="module-output">
+          <div class="module-output-label">作品集交付物</div>
+          一份针对目标 JD 优化过的简历（AI 批改后版本）+ 一轮模拟面试记录（AI 扮演挑剔面试官）。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="quote-section">
+  <div class="quote-inner">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">产品经理这个岗位没有一个固定的知识体系可以「学完」，它的能力本质是对人、对商业、对技术的综合判断力——而这三者都在持续变化。</p>
+    <div class="quote-author">—— 王慧文，美团联合创始人</div>
+  </div>
+</div>
+
+<div class="section" id="difference">
+  <div class="section-header">
+    <div class="section-eyebrow">为什么选我们</div>
+    <h2 class="section-title">不一样在哪里</h2>
+    <p class="section-sub">和人人都是产品经理、黑马、网易云课堂相比，我们有三个真实的差异。</p>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card featured">
+      <div class="diff-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+      <h3 class="diff-title">学完有结果，不只有知识</h3>
+      <p class="diff-text">每个模块绑定一个真实交付物。学完整个课程，你有 6 件作品，可以直接拿去面试——不需要临时准备材料。</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon"><svg viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+      <h3 class="diff-title">顾问视角，不是大厂视角</h3>
+      <p class="diff-text">课程由 PM 职业顾问主理。你学到的不只是「怎么做好 PM」，更是「面试官和企业真正在筛什么」——这个视角只有做过招聘侧的人才有。</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon"><svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+      <h3 class="diff-title">AI 批改 + 模拟面试</h3>
+      <p class="diff-text">提交作业后立刻拿到 AI 反馈，不需要等老师。模拟面试功能让你在安全环境里把同一份作品被不同角色的面试官反复挑战。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="books">
+  <div class="section-header">
+    <div class="section-eyebrow">书单推荐</div>
+    <h2 class="section-title">8 本够了，不需要更多</h2>
+    <p class="section-sub">按学习阶段排列，每本都有推荐理由。不要一次买齐，按顺序来。</p>
+  </div>
+  <div class="books-grid">
+    <div class="book-card"><div class="book-phase">先读这两本</div><div class="book-title">《人人都是产品经理》</div><div class="book-author">苏杰 著</div><div class="book-reason">用故事形式讲 PM 工作，入门最友好，不枯燥。建立第一个完整认知框架。</div></div>
+    <div class="book-card"><div class="book-phase">先读这两本</div><div class="book-title">《用户体验要素》</div><div class="book-author">Jesse James Garrett</div><div class="book-reason">经典用户体验原则，薄、易读。建立「以用户为中心」的设计直觉。</div></div>
+    <div class="book-card"><div class="book-phase">深化方法</div><div class="book-title">《精益创业》</div><div class="book-author">Eric Ries</div><div class="book-reason">MVP 思维的标准来源。快速验证假设，不要花 3 个月做一个没人用的功能。</div></div>
+    <div class="book-card"><div class="book-phase">深化方法</div><div class="book-title">《启示录》Inspired</div><div class="book-author">Marty Cagan</div><div class="book-reason">硅谷顶级产品思维，比人人都是产品经理更有深度。打好方法论地基。</div></div>
+    <div class="book-card"><div class="book-phase">深化方法</div><div class="book-title">《增长黑客》</div><div class="book-author">Sean Ellis</div><div class="book-reason">理解增长思维，数据驱动产品决策的入门书。了解产品背后的商业逻辑。</div></div>
+    <div class="book-card"><div class="book-phase">AI 时代加读</div><div class="book-title">《这就是 ChatGPT》</div><div class="book-author">Stephen Wolfram</div><div class="book-reason">理解大模型的能力边界，对做 AI 产品有直接帮助。不需要懂技术，读完就懂了。</div></div>
+    <div class="book-card"><div class="book-phase">AI 时代加读</div><div class="book-title">Prompt Engineering Guide</div><div class="book-author">Anthropic 官方（免费在线）</div><div class="book-reason">Prompt 工程的权威指南，2026 年 PM 的基础技能。免费，读完就能用。</div></div>
+    <div class="book-card"><div class="book-phase">AI 时代加读</div><div class="book-title">《AI 产品经理》</div><div class="book-author">李宁 著</div><div class="book-reason">了解 AI 产品设计的思维框架，帮你判断自己是否适合走 AI 产品方向。</div></div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2 class="cta-title">准备好开始了吗？</h2>
+  <p class="cta-sub">6 周后，你将拥有一个完整的 PM 作品集，而不只是一张证书。</p>
+  <div class="cta-actions">
+    <button class="btn-primary" onclick="document.getElementById('curriculum').scrollIntoView({behavior:'smooth'})">开始第一个模块</button>
+    <button class="btn-ghost">预约 1v1 咨询</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">PM 入门学院</div>
+    <div class="footer-links"><a href="#">课程体系</a><a href="#">书单</a><a href="#">关于我们</a></div>
+    <div class="footer-note">内容每季度更新 · 2026</div>
+  </div>
+</footer>
+</div>
+
+<script>
+const DB_KEY='pm_users';const SESSION_KEY='pm_session';
+function getUsers(){try{return JSON.parse(localStorage.getItem(DB_KEY)||'{}')}catch(e){return{}}}
+function saveUsers(u){localStorage.setItem(DB_KEY,JSON.stringify(u))}
+function getSession(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch(e){return null}}
+function saveSession(u){localStorage.setItem(SESSION_KEY,JSON.stringify(u))}
+function clearSession(){localStorage.removeItem(SESSION_KEY)}
+const MODULES=[
+  {num:'01',title:'产品经理职业认知',meta:'2–3 课时 · 1 周',color:'#eeedfe',tc:'#534ab7',deliverable:'职业认知自述',desc:'理解 PM 是什么、王慧文的定义、AI 时代的变化，写出你自己理解的职业认知自述。'},
+  {num:'02',title:'产品思维',meta:'3 课时 · 1 周',color:'#e1f5ee',tc:'#0f6e56',deliverable:'App 拆解分析',desc:'学会用「用户/需求/场景」三角拆解任意产品，完成一份结构化 App 分析报告。'},
+  {num:'03',title:'产品核心方法',meta:'10 课时 · 2–3 周',color:'#faeeda',tc:'#854f0b',deliverable:'用户研究报告 + PRD',desc:'掌握用户研究、竞品分析、需求优先级、原型设计、PRD 撰写的完整方法链路。'},
+  {num:'04',title:'AI 时代必备技能',meta:'4 课时 · 1 周',color:'#e6f1fb',tc:'#185fa5',deliverable:'AI 功能设计方案',desc:'学会 Prompt 工程、主流 AI 工具应用，完成一个 AI 功能设计方案。'},
+  {num:'05',title:'书单 + 求职准备',meta:'2 课时 + 练习 · 1 周',color:'#fbeaf0',tc:'#993556',deliverable:'简历 + 模拟面试',desc:'8 本精选书单 + PM 简历写法 + 高频面试题框架，完成一轮 AI 模拟面试。'},
+];
+function openAuth(e){if(e)e.preventDefault();document.getElementById('authOverlay').classList.add('show')}
+function closeAuth(){document.getElementById('authOverlay').classList.remove('show')}
+document.getElementById('authOverlay').addEventListener('click',function(e){if(e.target===this)closeAuth()});
+function switchAuth(mode,tabEl){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.auth-form').forEach(f=>f.classList.remove('active'));
+  if(tabEl)tabEl.classList.add('active');
+  else document.querySelectorAll('.auth-tab')[mode==='login'?0:1].classList.add('active');
+  document.getElementById(mode==='login'?'loginForm':'registerForm').classList.add('active');
+  document.getElementById('loginErr').classList.remove('show');
+  document.getElementById('registerErr').classList.remove('show');
+}
+function doLogin(e){
+  e.preventDefault();
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pwd=document.getElementById('loginPwd').value;
+  const users=getUsers();const errEl=document.getElementById('loginErr');
+  if(!users[email]){errEl.textContent='该邮箱未注册，请先注册';errEl.classList.add('show');return}
+  if(users[email].pwd!==btoa(unescape(encodeURIComponent(pwd)))){errEl.textContent='密码错误，请重试';errEl.classList.add('show');return}
+  const user={email,name:users[email].name,progress:users[email].progress||[]};
+  saveSession(user);closeAuth();onLogin(user);
+}
+function doRegister(e){
+  e.preventDefault();
+  const name=document.getElementById('regName').value.trim();
+  const email=document.getElementById('regEmail').value.trim().toLowerCase();
+  const pwd=document.getElementById('regPwd').value;
+  const errEl=document.getElementById('registerErr');
+  const users=getUsers();
+  if(users[email]){errEl.textContent='该邮箱已注册，请直接登录';errEl.classList.add('show');return}
+  users[email]={name,pwd:btoa(unescape(encodeURIComponent(pwd))),progress:[]};
+  saveUsers(users);
+  const user={email,name,progress:[]};saveSession(user);closeAuth();onLogin(user);
+}
+function doLogout(){
+  clearSession();
+  document.getElementById('navUser').style.display='none';
+  document.getElementById('navGuest').style.display='';
+  document.getElementById('dashboard').classList.remove('show');
+  document.getElementById('mainContent').classList.remove('hidden');
+  document.getElementById('navLinks').style.display='';
+}
+function goHome(){
+  const s=getSession();
+  if(s){document.getElementById('dashboard').classList.add('show');document.getElementById('mainContent').classList.add('hidden');}
+  else{document.getElementById('dashboard').classList.remove('show');document.getElementById('mainContent').classList.remove('hidden');}
+}
+function goDashboard(){
+  document.getElementById('dashboard').classList.add('show');
+  document.getElementById('mainContent').classList.add('hidden');
+}
+function onLogin(user){
+  document.getElementById('navGuest').style.display='none';
+  document.getElementById('navUser').style.display='flex';
+  document.getElementById('navUserName').textContent=user.name;
+  document.getElementById('navAvatar').textContent=user.name.charAt(0).toUpperCase();
+  document.getElementById('navLinks').style.display='none';
+  document.getElementById('dashWelcome').textContent='你好，'+user.name+' 👋';
+  renderDashboard(user);
+  document.getElementById('dashboard').classList.add('show');
+  document.getElementById('mainContent').classList.add('hidden');
+}
+function getProgressData(user){
+  try{const users=getUsers();return users[user.email]?.progress||[]}catch(e){return[]}
+}
+function markDone(userEmail,modIdx){
+  const users=getUsers();if(!users[userEmail])return;
+  const prog=users[userEmail].progress||[];
+  if(!prog.includes(modIdx))prog.push(modIdx);
+  users[userEmail].progress=prog;saveUsers(users);
+  const s=getSession();s.progress=prog;saveSession(s);renderDashboard(s);
+}
+function renderDashboard(user){
+  const prog=getProgressData(user);const done=prog.length;
+  document.getElementById('dashDone').textContent=done;
+  document.getElementById('dashBar').style.width=Math.round(done/6*100)+'%';
+  const listEl=document.getElementById('dashModList');listEl.innerHTML='';
+  MODULES.forEach((m,i)=>{
+    const isDone=prog.includes(i);const isActive=!isDone&&(i===0||prog.includes(i-1));
+    const div=document.createElement('div');div.className='dash-mod-item'+(isActive?' active-mod':'');
+    div.innerHTML=`<div class="dmi-dot ${isDone?'dmi-done':isActive?'dmi-active':'dmi-locked'}"></div><span class="dmi-label">${m.num} · ${m.title.length>8?m.title.slice(0,8)+'…':m.title}</span>${isDone?'<span class="dmi-check">✓</span>':''}`;
+    listEl.appendChild(div);
+  });
+  const mainEl=document.getElementById('dashMain');mainEl.innerHTML='';
+  MODULES.forEach((m,i)=>{
+    const isDone=prog.includes(i);const isActive=!isDone&&(i===0||prog.includes(i-1));const isLocked=!isDone&&!isActive;
+    const card=document.createElement('div');card.className='dash-module-card';
+    card.innerHTML=`<div class="dmc-header"><div class="dmc-num" style="background:${m.color};color:${m.tc}">${m.num}</div><div class="dmc-info"><div class="dmc-title">${m.title}</div><div class="dmc-meta">${m.meta}</div></div><div class="dmc-status ${isDone?'status-done':isActive?'status-active':'status-locked'}">${isDone?'已完成':isActive?'进行中':'未解锁'}</div></div><div class="dmc-body"><div class="dmc-desc">${m.desc}</div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="dmc-action ${isLocked?'locked-btn':''}" ${isLocked?'disabled':'onclick="startModule('+i+')"'}>${isDone?'复习模块':'进入学习 →'}</button><span style="font-size:11px;color:var(--muted)">交付物：${m.deliverable}</span>${!isDone&&isActive?`<button onclick="markDone('${user.email}',${i})" style="font-size:11px;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-family:var(--sans)">标记完成</button>`:''}</div></div>`;
+    mainEl.appendChild(card);
+  });
+}
+function startModule(i){alert('模块 '+MODULES[i].num+' 「'+MODULES[i].title+'」
+
+课程内容正在建设中，敬请期待！
+完成学习后点击「标记完成」记录进度。')}
+function toggleModule(header){const body=header.nextElementSibling;body.classList.toggle('open')}
+
+// ── WANG COURSE VIEWER ──
+const WL=[
+  {num:'01',week:'第一周·认知框架',title:'成功产品的规律',sub:'为什么最终胜出的通常都不是行业第一个？',time:'约20分钟',
+   reading:`<h3>一、成功和失败的产品</h3><p>老王说，成功和失败的比例大约是1:30。失败的原因多种多样，有些啥都没做对，有些做对了一部分——他把后者称为「成功的失败」。</p><div class="read-hl"><strong>核心观察：</strong>几乎在每一个大行业里，最终取得成功的通常都不是第一家。iPhone不是第一款智能手机，iPod不是第一款MP3，微信不是第一款即时通讯软件，Chrome不是第一款浏览器。</div><h3>五个经典案例</h3><p><strong>iPhone vs. 诺基亚：</strong>2000年左右诺基亚是手机行业里最牛的品牌，直到2007年iPhone登场。诺基亚并非技术落后，而是产品判断出了问题。</p><p><strong>iPod vs. MPMan：</strong>MPMan是全球第一款MP3播放器，iPod甚至比国内爱国者MP3都晚，但最终胜出的是iPod。今天大多的成功案例都不是行业内的第一款产品。</p><p><strong>微信 vs. Kik：</strong>微信是模仿Kik的，甚至不是第一个模仿Kik的——前面还有米聊、TalkBox，但微信是最成功的。</p><p><strong>Chrome vs. IE：</strong>Chrome开始做时IE是Windows自带浏览器，需要用户主动下载才能用Chrome，考虑这个因素，Chrome是非常成功的。</p><div class="read-hl"><strong>老王的结论：</strong>不是第一个，说明技术可能已经不是瓶颈了，而真正关键的原因是产品经理。Google也不是第一个搜索引擎，Tesla也不是第一个做电动车的。</div><p>这意味着：你不需要「发明」一个全新的东西，你需要的是比前人更深刻地理解用户需求，在合适的时间节点，用更好的产品判断力去做一件「别人做过但没做好的事」。</p>`,
+   qs:['从这五个案例里，你观察到「后来者」胜出的共同规律是什么？用自己的话总结，不超过3条。','联系你自己用过的产品，你能想到一个「不是行业第一但最终胜出」的中国产品吗？它为什么能赢？'],
+   rp:'你是资深产品顾问，学生刚读完「成功产品的规律」并回答了思考问题。针对学生的具体回答提出1个深度追问，帮他把思考推进一层。不要夸奖，不要总结，只提问。每次只问一个问题，不超过2句话。',
+   fp:'批改学生对「成功产品的规律」的学习笔记。评估：1.洞察深度（是否抓住后来者优势的本质）2.迁移能力（能否联系真实案例）3.批判性思维（是否有自己判断）。严格以JSON返回不加任何其他文字：{"score1":数字,"score2":数字,"score3":数字,"strength":"2句话","weakness":"2句话","suggestions":["建议1","建议2"],"elaine_note":"一句话顾问洞察"}'
+  },
+  {num:'02',week:'第一周·认知框架',title:'成功的产品经理',sub:'乔布斯、张小龙、Pichai——他们身上有什么共同的产品人特质？',time:'约20分钟',
+   reading:`<h3>人类历史上第一个产品经理</h3><p>Neil McElroy，宝洁的经济学专业毕业生。他提出应该设立一个岗位对产品的成败负责任，推动设立了产品经理这个职位。后来他成为了宝洁的总裁，还做过美国国防部部长。</p><div class="read-hl"><strong>关键启示：</strong>Neil是学经济学的，做的是肥皂，最后做到了国防部长。做好产品经理和专业背景不太有关系——他的核心能力是跨领域的通用判断力。</div><h3>乔布斯</h3><p>大家对乔布斯最熟悉的是iPhone，但他和沃兹第一个搞出了个人电脑PC——沃兹负责开发，乔布斯负责销售，Apple II大获成功，图形化界面是他们率先普及的。被苹果赶走后乔布斯投资了Pixar，做了《玩具总动员》。当时Dell老板给乔布斯的建议是：把苹果解散把钱还给股东。</p><h3>张小龙</h3><p>张小龙的第一款产品是Foxmail，第二款是QQMail，第三款是微信。老王说：强档推荐龙神的分享，每隔一段时间读一遍。</p><h3>Pichai——最特别的案例</h3><p>Pichai是学冶金工程的。浏览器相当于一个小型操作系统，技术含量非常高——所以Pichai做成了Chrome是非常有意义的事。Google是一家搜索引擎为主的公司，却选了一个做Chrome且不懂技术的人做CEO。</p><div class="read-hl"><strong>老王的核心结论：</strong>如果这门课啥都没记住，就记住一句话：<strong>产品经理是CEO的学前班</strong>。即使一开始是职业产品经理，也应该从第一天就具备创业产品经理的思维方式。职业PM的技能决定你能否进入行业，但创业PM的思维决定你的上限。</div>`,
+   qs:['乔布斯、张小龙、Pichai三人，你认为他们最重要的共同点是什么？不要列清单，用一句话概括。','「职业PM的技能决定你能进入行业，创业PM的思维决定你的上限」——你认为这句话对应届生意味着什么？从现在开始，你能做什么？'],
+   rp:'你是资深产品顾问，学生刚读完「成功的产品经理」。针对学生的具体回答提出1个深度追问，不超过2句话，只问一个问题。',
+   fp:'批改学生对「成功的产品经理」的学习笔记。评估：1.特质提炼（是否抓住本质而不只是列举事实）2.自我关联（是否联系自己现实处境）3.行动导向（是否有具体行动意识）。严格JSON：{"score1":数字,"score2":数字,"score3":数字,"strength":"2句话","weakness":"2句话","suggestions":["建议1","建议2"],"elaine_note":"一句话"}'
+  },
+  {num:'03',week:'第一周·认知框架',title:'如何看待PM这个职业',sub:'为什么王慧文说产品经理是「终身学习的职业」？',time:'约18分钟',
+   reading:`<h3>产品经理是终身学习的职业</h3><p>老王希望这门课能让高中刚毕业的学生都能听懂，没有专业门槛。做好产品经理和专业不太有关系——最根本上是和本人的三观有关。</p><div class="read-hl"><strong>核心定义：</strong>产品经理是一个需要终身学习的职业。想学一门专业的技术，一段时间后就只用好这门技术，这不容易做好产品经理。产品经理是一个跨领域的专业，需要解决很多新的问题。</div><h3>专用性与通用性并存</h3><p><strong>专用性：</strong>电商产品经理和游戏产品经理的专业差别很大，在一个领域很成功的产品经理换一个领域，工作方法可能就不灵了。</p><p><strong>通用性：</strong>产品经理的核心能力是关于方法论的：正确的思考方法、沟通方法、工作方法、认知方法、学习方法。这也是为什么Pichai（冶金专业）能做好Chrome——他们的通用性能力很强。</p><h3>推荐书单</h3><div class="read-hl"><strong>老王推荐的五本书：</strong>《The PayPal Wars》（支付战争）· 《引爆流行》· 《精益创业》· 《创新者的窘境》· 《零售的哲学》。老王说最后这本书是「入门门槛虽然低，但常读常新」，不管是入门PM还是资深PM都会有收获。</div>`,
+   qs:['「产品经理的核心能力是方法论：正确的思考、沟通、工作、认知、学习方法」——你目前哪个方面最薄弱？为什么这么判断？','老王推荐的五本书，你最想先读哪本？为什么是这本，而不是其他几本？'],
+   rp:'你是资深产品顾问，学生刚读完「如何看待PM职业」。针对学生回答提出1个深度追问，不超过2句话。',
+   fp:'批改学生对「如何看待PM职业」的笔记。评估：1.自我认知（是否真实认识自己薄弱处）2.学习规划（是否有具体改进方向）3.职业理解（是否理解了终身学习的真实含义）。严格JSON：{"score1":数字,"score2":数字,"score3":数字,"strength":"2句话","weakness":"2句话","suggestions":["建议1","建议2"],"elaine_note":"一句话"}'
+  },
+  {num:'04',week:'第二周·战略思维',title:'市场体量与规模效应',sub:'判断市场体量为什么是最难也最重要的事？',time:'约35分钟',
+   reading:`<h3>一、市场体量（TAM）是第一要素</h3><p>如果只能看一个要素，看什么？看行业体量。很多企业在这一步就已经决定了成败，和后面员工老板多努力什么的一点关系都没有。</p><div class="read-hl"><strong>老王的外卖故事：</strong>老王当年看了美国GrubHub，做了10年才上市每天才二三十万单，觉得「太慢太小太索然无味了」。但调研饿了么后发现不亏损经营且年增长率200%——在一定体量下有这么高的增速，就可以拟合出市场体量来了。当时美团估算这个市场应该有1天1000万单，今天看来还是低估了一个数量级，但已经是全行业最激进的估算。</div><h3>二、规模效应是商业世界的万有引力</h3><p>老王对规模效应的定义：<strong>交易额/客户使用量足够大之后所产生的客户体验优势或成本优势。</strong></p><h3>三条规模效应曲线</h3><p><strong>A曲线（指数增长/网络效应）：</strong>微信是典型。今天你做一个和微信一模一样的软件是没用的，你的朋友不在里面你也完全用不了。这种生意行业里只会有一家。关键概念：Critical Mass（临界规模），先过临界点的公司会迅速和后面的同行拉开差距。</p><p><strong>B曲线（线性增长）：</strong>淘宝。每多一个用户都能接纳，但用户间没有竞争，所以价值是随规模线性上升的。这解释了为什么淘宝做到今天竞争对手还在变多——规模效应不够强。</p><p><strong>C曲线（对数增长）：</strong>双边网络且同边负效应的生意，比如外卖和打车。外卖规模效应比打车稍好一些。</p><div class="read-hl"><strong>规模效应的范围（Scope）：</strong>全球型（微信）、全国型（淘宝）、城市型（打车）、蜂窝型（外卖）。蜂窝型的问题是：不管进攻还是防御，都是地面巷战。</div>`,
+   qs:['A/B/C三条规模效应曲线，请用你熟悉的中国互联网产品各举一个例子，并说明为什么它符合这条曲线。','老王说「如果只能看一个要素，看市场体量」。但大多数人都知道这很重要，为什么还是经常判断错？你认为核心难点在哪里？'],
+   rp:'你是资深产品顾问，学生刚读完「市场体量与规模效应」。针对学生回答提出1个深度追问，具体犀利，不超过2句话。',
+   fp:'批改学生对「市场体量与规模效应」的笔记。评估：1.概念理解（三条曲线是否真正理解而非背诵）2.案例质量（举的例子是否有说服力）3.批判深度（对判断难点的思考是否有洞察）。严格JSON：{"score1":数字,"score2":数字,"score3":数字,"strength":"2句话","weakness":"2句话","suggestions":["建议1","建议2"],"elaine_note":"一句话"}'
+  },
+  {num:'05',week:'第二周·战略思维',title:'PMF 与产品战略',sub:'什么是PMF？STP和4P如何帮你找到最锐利的切入点？',time:'约30分钟',
+   reading:`<h3>一、PMF：产品最重要的第一步</h3><p>PMF（Product Market Fit）——老王认为「为市场匹配一个产品」比「为产品找一个市场」更正确。无论你要做多大的市场，最开始都需要找一个更锐利的切入点，PMF选择越犀利，早期ROI越高，成功概率越高。</p><div class="read-hl"><strong>关键提醒：</strong>很多早期公司成败的点就在于是否找到了PMF：有的没找到PMF却在发力，早早把钱花光了；有的找到了PMF却没有发力猛搞；更多的团队是在找PMF的过程中丧失信心散掉了。</div><h3>二、STP：找到PMF的核心方法</h3><p><strong>S（Segmenting）：</strong>对市场做划分，关键是选择正确的坐标系。划分要素不重不漏（Mutually exclusive, collectively exhaustive）。王兴经常说：如果你分析得足够好，那么决策会自己呈现的。</p><p><strong>T（Targeting）：</strong>在划分完的市场里选一块。校内网的切入点是校园市场，但目标市场还是所有的人群。</p><p><strong>P（Positioning）：</strong>对于用户来说，你的产品是什么，用户为什么要选你。</p><h3>校内网的STP实战</h3><p>多多友是个所有人都能用的网站，怎么搞也没起色。2005年底切换到校内网，产品会做得非常切合学生需求——甚至有学生觉得校内网就是学校官方网站。这就是市场细分之后开始出现的神奇效应。</p><h3>三、4P：互联网时代的变化</h3><div class="read-hl"><strong>互联网时代的根本变化：</strong>比特和原子的区别——比特传输速度接近光速，复制成本接近零，且可编程。最厉害的商业模式是将4P中的某一个挤压为0，然后在另一个P里赚钱。360把Price降到0，然后把Product变成了Place来赚渠道的钱。</div>`,
+   qs:['用STP框架分析一个你熟悉的产品（小红书、B站或拼多多任选其一）：S是什么维度划分的？T选了哪个细分市场？P是什么？','「定价决定产品，而不是反过来」——举一个你觉得这个逻辑成立的真实案例，说明为什么。'],
+   rp:'你是资深产品顾问，学生刚读完PMF与STP相关内容。针对学生回答提出1个深度追问，具体犀利，不超过2句话。',
+   fp:'批改学生对「PMF与产品战略」的笔记。评估：1.框架应用（STP分析是否真实而不是套模板）2.定价逻辑（对「定价决定产品」的理解是否深入）3.案例质量（举的例子是否有说服力）。严格JSON：{"score1":数字,"score2":数字,"score3":数字,"strength":"2句话","weakness":"2句话","suggestions":["建议1","建议2"],"elaine_note":"一句话"}'
+  },
+  {num:'06',week:'第三周·需求与运营',title:'需求的本质与供需关系',sub:'什么是真正的Needs？供需判断为什么是经营中最难的事？',time:'约35分钟',
+   reading:`<h3>一、需求的不可满足性</h3><p>在人类的需求中，能满足的远远少于不能满足的——很多需求当前的科学就解决不了。老王说他第一次认识到「长生不老」这个需求不可能被满足的时候，抑郁了半年。</p><div class="read-hl"><strong>分层筛选：</strong>在科学能解决的需求里，ROI正的需求远远少于ROI负的需求。ROI正的需求里，能支持一个团队规模化运作的更少。真正能支撑你独立做一个公司的需求是极其稀缺的。认识到这一点，就会对很多事情有很强的批判精神。</div><h3>二、如何识别需求</h3><p>基本没有用户会直接说出自己的Needs。大部分人提的是Demand（需求量）或Requirement（功能要求），极少有人提的是Needs（根本动机）。</p><p>就像没有汽车的时候人们想要「更快的马」——他们说出的是解决方案，不是根本需求。</p><div class="read-hl"><strong>老王的美团CRM故事：</strong>做了3版都失败了，后来老王让阿干从功能清单里只选3个，做完之后就是整个团购行业最好的CRM产品了。关键洞察：销售和品控说要「商家评分」，但他们的真实Needs完全不一样——销售想区分销量，品控想找出有拖欠风险的商家。同一个词背后是完全不同的Needs。</div><h3>三、供需关系的重要性</h3><p>供需决定一切，但理解供需很难。老王问了各种便利店和超市老大「零售这个行业供给重要还是需求重要」，所有老大的回答都是供给重要。但老王认为这和商业常识不匹配——工业化生产的环境里大部分商品都是供过于求的。</p><div class="read-hl"><strong>行为比语言诚实：</strong>老王追问「在你们公司什么事情是非你自己干不可的」，老大们一致回答是「选址」——而选址是需求的集合。他们语言上说供给重要，但行为却很诚实。</div>`,
+   qs:['「基本没有用户会直接说出自己的Needs，大部分提的是Requirement或Demand」——你能举一个你自己生活中的真实例子，说明Needs、Requirement、Demand三者的区别吗？','「供需决定一切，但大部分团队都会在实际工作中把供需状况搞反」——你认为为什么人们容易搞反？背后的心理和组织原因是什么？'],
+   rp:'你是资深产品顾问，学生刚读完「需求的本质与供需关系」。针对学生回答提出1个深度追问，具体犀利，不超过2句话，只问一个问题。',
+   fp:'批改学生对「需求的本质与供需关系」的笔记。评估：1.Needs识别（是否真正区分了三个词）2.供需理解（对供需被搞反的原因是否有洞察）3.案例真实度（举的例子是否真实具体）。严格JSON：{"score1":数字,"score2":数字,"score3":数字,"strength":"2句话","weakness":"2句话","suggestions":["建议1","建议2"],"elaine_note":"一句话"}'
+  }
+];
+
+let wCur=0, wState={}, wReflect=[], wThinking=false;
+
+function openCourseViewer(e){
+  if(e)e.preventDefault();
+  document.getElementById('courseViewer').classList.add('open');
+  document.body.style.overflow='hidden';
+  wCur=0; renderWLesson(0);
+}
+function closeCourseViewer(){
+  document.getElementById('courseViewer').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function renderWLesson(idx){
+  wCur=idx;
+  wState={readDone:false,thinkDone:false,thinkAnswers:[],reflectCount:0};
+  wReflect=[];
+  wThinking=false;
+  document.getElementById('cvProgress').textContent='第'+(idx+1)+'课 / 共'+WL.length+'课';
+  // sidebar
+  const sb=document.getElementById('cvSidebar');
+  let weeks=[...new Set(WL.map(l=>l.week))];
+  sb.innerHTML=weeks.map(w=>`
+    <div class="cv-week">${w}</div>
+    ${WL.filter(l=>l.week===w).map((l,_,__)=>{
+      const i=WL.indexOf(l);
+      return `<div class="cv-item ${i===idx?'cv-active':''}" onclick="renderWLesson(${i})"><div class="cv-dot"></div>${l.num}·${l.title}</div>`;
+    }).join('')}
+  `).join('');
+  // main
+  const L=WL[idx];
+  document.getElementById('cvMain').innerHTML=`
+    <div class="cv-eyebrow">${L.week} · 第 ${L.num} 课</div>
+    <div class="cv-lesson-title">${L.title}</div>
+    <div class="cv-lesson-sub">${L.sub}</div>
+    <div class="cv-meta-row">
+      <div class="cv-meta-item">${L.time}</div>
+      <div class="cv-meta-item">4 个学习步骤</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-hd"><div class="step-badge sb1">01</div><div class="step-hd-label">阅读内容</div><div class="step-hd-sub">先读，再思考</div></div>
+      <div class="step-bd">
+        <div class="read-text">${L.reading}</div>
+        <button class="read-btn" id="wReadBtn" onclick="wMarkRead()">读完了，开始思考 →</button>
+      </div>
+    </div>
+
+    <div class="step-block" id="wStep2" style="opacity:.45;pointer-events:none">
+      <div class="step-hd"><div class="step-badge sb2">02</div><div class="step-hd-label">思考问题</div><div class="step-hd-sub">用自己的话回答</div></div>
+      <div class="step-bd">
+        <div class="tq-list">
+          ${L.qs.map((q,i)=>`<div class="tq"><div class="tq-num">问题 ${i+1}</div><div class="tq-text">${q}</div><textarea class="tq-ta" id="wtq${i}" placeholder="写下你的思考……"></textarea></div>`).join('')}
+        </div>
+        <button class="submit-btn" onclick="wSubmitThink()">提交思考，进入复盘 →</button>
+      </div>
+    </div>
+
+    <div class="step-block" id="wStep3" style="opacity:.45;pointer-events:none">
+      <div class="step-hd"><div class="step-badge sb3">03</div><div class="step-hd-label">AI 追问复盘</div><div class="step-hd-sub">把思考推深一层</div></div>
+      <div class="step-bd">
+        <div class="reflect-intro">AI 会针对你的回答提出追问，不是评分，是帮你把思考推得更深。回答至少 2 轮后可以进入点评。</div>
+        <div class="r-msgs" id="wMsgs"></div>
+        <div class="r-input-row"><input class="r-in" id="wIn" placeholder="输入你的回答……" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();wSendReflect();}"><button class="r-send" id="wSend" onclick="wSendReflect()">发送</button></div>
+      </div>
+    </div>
+
+    <div class="step-block" id="wStep4" style="opacity:.45;pointer-events:none">
+      <div class="step-hd"><div class="step-badge sb4">04</div><div class="step-hd-label">AI 点评</div><div class="step-hd-sub">结构化反馈 + 顾问建议</div></div>
+      <div class="step-bd">
+        <div id="wFbTrig"><p style="font-size:13px;color:var(--muted);margin-bottom:12px">完成复盘对话后，获取这节课的完整点评——三维度评分、具体建议，以及 Elaine 的顾问视角。</p><button class="fb-trig" onclick="wGetFeedback()">获取本课点评 →</button></div>
+        <div class="fb-spin-row" id="wFbLoad"><div class="mini-spin"></div><span>AI 正在分析你的学习过程……</span></div>
+        <div class="fb-out" id="wFbOut">
+          <div class="fb-scores"><div class="fb-sc"><div class="fb-sc-l">维度一</div><div class="fb-sc-v" id="wS1">—</div></div><div class="fb-sc"><div class="fb-sc-l">维度二</div><div class="fb-sc-v" id="wS2">—</div></div><div class="fb-sc"><div class="fb-sc-l">维度三</div><div class="fb-sc-v" id="wS3">—</div></div></div>
+          <div class="fb-blk"><div class="fb-blk-l">做得好的地方</div><div class="fb-blk-t" id="wFbStr"></div></div>
+          <div class="fb-blk warn"><div class="fb-blk-l">需要改进</div><div class="fb-blk-t" id="wFbWeak"></div></div>
+          <div class="fb-blk"><div class="fb-blk-l">具体建议</div><div class="fb-blk-t" id="wFbSug"></div></div>
+          <div class="e-note"><div class="e-av">E</div><div><div class="e-n">Elaine 的顾问洞察</div><div class="e-t" id="wFbElaine"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-lesson-nav">
+      <button class="cv-nav-btn" onclick="wPrev()" ${idx===0?'style="opacity:.3;pointer-events:none"':''}>← 上一课</button>
+      <span style="font-size:11px;color:var(--hint);font-family:var(--mono)">${idx+1} / ${WL.length}</span>
+      <button class="cv-nav-btn prim" onclick="wNext()" ${idx===WL.length-1?'style="opacity:.3;pointer-events:none"':''}>下一课 →</button>
+    </div>
+  `;
+}
+
+function wMarkRead(){
+  wState.readDone=true;
+  const btn=document.getElementById('wReadBtn');
+  btn.textContent='✓ 已读完'; btn.classList.add('done-btn');
+  const s2=document.getElementById('wStep2');
+  s2.style.opacity='1'; s2.style.pointerEvents='auto';
+  s2.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function wSubmitThink(){
+  const L=WL[wCur];
+  const ans=L.qs.map((_,i)=>document.getElementById('wtq'+i)?.value?.trim()||'');
+  if(ans.every(a=>a.length<10)){alert('请先认真回答两个问题再继续');return;}
+  wState.thinkDone=true; wState.thinkAnswers=ans;
+  const s3=document.getElementById('wStep3');
+  s3.style.opacity='1'; s3.style.pointerEvents='auto';
+  s3.scrollIntoView({behavior:'smooth',block:'start'});
+  wStartReflect();
+}
+
+async function wStartReflect(){
+  const L=WL[wCur];
+  const ans=wState.thinkAnswers.join('\n\n');
+  const reply=await wCallAI(L.rp,`学生对「${L.title}」的思考回答如下：\n\n${ans}\n\n请提出你的第一个追问。`);
+  wAddMsg('ai',reply);
+  wReflect.push({role:'user',content:`学生回答：${ans}`});
+  wReflect.push({role:'assistant',content:reply});
+}
+
+async function wSendReflect(){
+  if(wThinking)return;
+  const inp=document.getElementById('wIn');
+  const txt=inp.value.trim(); if(!txt)return;
+  wAddMsg('user',txt);
+  wReflect.push({role:'user',content:txt});
+  inp.value=''; wThinking=true;
+  document.getElementById('wSend').disabled=true;
+  wAddTyping();
+  const L=WL[wCur];
+  const reply=await wCallAI(L.rp,null,wReflect);
+  wRemoveTyping();
+  wAddMsg('ai',reply);
+  wReflect.push({role:'assistant',content:reply});
+  wThinking=false;
+  document.getElementById('wSend').disabled=false;
+  wState.reflectCount++;
+  if(wState.reflectCount>=2){
+    const s4=document.getElementById('wStep4');
+    s4.style.opacity='1'; s4.style.pointerEvents='auto';
+  }
+}
+
+function wAddMsg(role,text){
+  const w=document.getElementById('wMsgs');
+  const d=document.createElement('div');
+  d.className=`r-msg ${role==='user'?'r-user':''}`;
+  d.innerHTML=`<div class="r-av ${role==='ai'?'ai':'me'}">${role==='ai'?'AI':'我'}</div><div class="r-bub ${role==='ai'?'ai-b':'me-b'}">${text}</div>`;
+  w.appendChild(d); w.scrollTop=w.scrollHeight;
+}
+function wAddTyping(){
+  const w=document.getElementById('wMsgs');
+  const d=document.createElement('div'); d.className='r-msg'; d.id='wTyping';
+  d.innerHTML=`<div class="r-av ai">AI</div><div class="r-bub ai-b"><div class="tdots"><span></span><span></span><span></span></div></div>`;
+  w.appendChild(d); w.scrollTop=w.scrollHeight;
+}
+function wRemoveTyping(){const e=document.getElementById('wTyping');if(e)e.remove();}
+
+async function wGetFeedback(){
+  const L=WL[wCur];
+  document.getElementById('wFbTrig').style.display='none';
+  document.getElementById('wFbLoad').classList.add('show');
+  const allAns=(wState.thinkAnswers||[]).join('\n\n');
+  const chat=wReflect.map(m=>`${m.role==='user'?'学生':'AI'}：${m.content}`).join('\n');
+  const raw=await wCallAI(L.fp,`学生的思考回答：\n${allAns}\n\n复盘对话记录：\n${chat}`);
+  try{
+    const r=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    document.getElementById('wS1').textContent=(r.score1||0)+'/10';
+    document.getElementById('wS2').textContent=(r.score2||0)+'/10';
+    document.getElementById('wS3').textContent=(r.score3||0)+'/10';
+    document.getElementById('wFbStr').textContent=r.strength||'';
+    document.getElementById('wFbWeak').textContent=r.weakness||'';
+    document.getElementById('wFbSug').innerHTML=(r.suggestions||[]).map(s=>`<p style="margin-bottom:5px">→ ${s}</p>`).join('');
+    document.getElementById('wFbElaine').textContent=r.elaine_note||'';
+    document.getElementById('wFbLoad').classList.remove('show');
+    document.getElementById('wFbOut').classList.add('show');
+  }catch(e){
+    document.getElementById('wFbLoad').classList.remove('show');
+    document.getElementById('wFbOut').innerHTML='<p style="font-size:13px;color:#c4622d">点评加载失败，请稍后重试。</p>';
+    document.getElementById('wFbOut').classList.add('show');
+  }
+}
+
+async function wCallAI(system,userMsg,history){
+  try{
+    const messages=history?history:[{role:'user',content:userMsg}];
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system,messages})});
+    const data=await resp.json();
+    return data.content?.[0]?.text||'请稍后重试。';
+  }catch(e){return '连接出现问题，请稍后重试。';}
+}
+
+function wPrev(){if(wCur>0){renderWLesson(wCur-1);document.getElementById('courseViewer').scrollTop=0;}}
+function wNext(){if(wCur<WL.length-1){renderWLesson(wCur+1);document.getElementById('courseViewer').scrollTop=0;}}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelector('.module-card.mod1 .module-header').click();
+  const s=getSession();if(s)onLogin(s);
+});
+</script>
+
+<!-- WANG COURSE VIEWER -->
+<div class="course-viewer" id="courseViewer">
+  <div class="cv-nav">
+    <button class="cv-back" onclick="closeCourseViewer()">← 返回课程</button>
+    <div class="cv-title">王慧文清华产品课</div>
+    <div class="cv-progress" id="cvProgress">第 1 课 / 共 6 课</div>
+  </div>
+  <div class="cv-layout">
+    <div class="cv-sidebar" id="cvSidebar"></div>
+    <div class="cv-main" id="cvMain"></div>
+  </div>
+</div>
+
+</body>
+</html>
